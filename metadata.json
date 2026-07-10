@@ -1,0 +1,6 @@
+{
+  "name": "Bhumi Archipelago",
+  "description": "Indonesia's Premium Coffee & Tea Export House",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
