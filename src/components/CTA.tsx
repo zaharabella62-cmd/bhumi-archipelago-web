@@ -22,18 +22,46 @@ export default function CTA() {
     consent: false
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Construct email subject and body
-    const subject = encodeURIComponent(`Quotation Request from ${formData.companyName}`);
-    const body = encodeURIComponent(`Full Name: ${formData.fullName}\nCompany Name: ${formData.companyName}\nJob Title: ${formData.jobTitle || '-'}\nEmail: ${formData.email}\nPhone: ${formData.phone || '-'}\nCountry: ${formData.country}\n\nMessage:\n${formData.message}`);
-    
-    // Open email client
-    window.location.href = `mailto:hello@bhumiarchipelago.com?subject=${subject}&body=${body}`;
-    
-    // Show success state
-    setIsSubmitted(true);
+    // Web3Forms Access Key
+    const ACCESS_KEY = "5b54adf5-e5b4-4462-8b8a-6fcad1a65a8b";
+
+    if (ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
+        // Fallback ke metode mailto jika Access Key belum diisi
+        const subject = encodeURIComponent(`Quotation Request from ${formData.companyName}`);
+        const body = encodeURIComponent(`Full Name: ${formData.fullName}\nCompany Name: ${formData.companyName}\nJob Title: ${formData.jobTitle || '-'}\nEmail: ${formData.email}\nPhone: ${formData.phone || '-'}\nCountry: ${formData.country}\n\nMessage:\n${formData.message}`);
+        
+        window.location.href = `mailto:hello@bhumiarchipelago.com?subject=${subject}&body=${body}`;
+        setIsSubmitted(true);
+        return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `New Quotation Request from ${formData.companyName}`,
+          from_name: 'Bhumi Archipelago Website',
+          ...formData
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Terjadi kesalahan jaringan saat mengirim pesan.");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
