@@ -3,34 +3,31 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Specialties from './components/Specialties';
-import WhyIndonesia from './components/WhyIndonesia';
-import WhyChooseUs from './components/WhyChooseUs';
-import OtherCommodities from './components/OtherCommodities';
-import BuyerJourney from './components/BuyerJourney';
-import Testimonial from './components/Testimonial';
-import CTA from './components/CTA';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import ProductsPage from './pages/ProductsPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
-    <div className="min-h-screen font-sans bg-ivory selection:bg-gold/30">
-      <Header />
-      <main className="pt-24">
-        <Hero />
-        <About />
-        <Specialties />
-        <WhyIndonesia />
-        <WhyChooseUs />
-        <OtherCommodities />
-        <BuyerJourney />
-        <Testimonial />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen font-sans bg-ivory selection:bg-gold/30">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<ProductsPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }

@@ -26,7 +26,7 @@ export default function CTA() {
     e.preventDefault();
     
     // Web3Forms Access Key
-    const ACCESS_KEY = "5b54adf5-e5b4-4462-8b8a-6fcad1a65a8b";
+    const ACCESS_KEY: string = "5b54adf5-e5b4-4462-8b8a-6fcad1a65a8b";
 
     if (ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
         // Fallback ke metode mailto jika Access Key belum diisi
@@ -87,10 +87,10 @@ export default function CTA() {
               className="text-center space-y-6"
             >
               <h2 className="text-4xl md:text-5xl font-semibold text-gold">
-                Looking for Premium Indonesian Coffee or Tea?
+                Ready to Source Premium Indonesian Coffee?
               </h2>
-              <p className="text-xl font-sans font-light text-ivory/90">
-                Tell us your sourcing requirements, and our team will get back to you within 24 hours.
+              <p className="text-xl font-sans font-light text-ivory/90 max-w-2xl mx-auto">
+                Whether you're an importer, coffee roaster, distributor, wholesaler, or private label brand, our team is ready to help you find the right products for your market.
               </p>
             </motion.div>
 

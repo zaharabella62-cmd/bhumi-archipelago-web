@@ -15,7 +15,7 @@ export default function Footer() {
               <div>
                 <h3 className="text-2xl font-semibold text-gold mb-1">PT Bhumi Archipelago Global</h3>
                 <p className="font-sans font-light text-ivory/70 text-base">
-                  From Indonesia's Archipelago to Global Markets
+                  Connecting Global Buyers with Indonesia's Finest Coffee & Tea
                 </p>
               </div>
             </div>
@@ -53,8 +53,7 @@ export default function Footer() {
             <div className="flex items-start gap-3 text-ivory/90 font-sans font-light">
               <MapPin size={20} className="mt-1 flex-shrink-0 text-gold" />
               <p className="text-base leading-relaxed">
-                Ds. Krajan 01, Telukambulu, Batujaya, Karawang,<br />
-                West Java, Indonesia 41354
+                Karawang, West Java, Indonesia 41354
               </p>
             </div>
           </div>
